@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Sindy">
+      <UniqueIdentifier>{2ffc6871-7b47-4cb1-bc01-d28fb21d34bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sindy\Common">
+      <UniqueIdentifier>{112af7e0-74e6-437f-8b6b-d87ee1e57055}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sindy\SQLite">
+      <UniqueIdentifier>{de79561a-4003-4768-a42d-adf7687abc0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sindy\RangeBound">
+      <UniqueIdentifier>{4a7a0b05-59c7-42d6-9320-5f61cfbecba4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Sindy.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Sindy\Common\StringUtil.h">
+      <Filter>Sindy\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Sindy\Common\UtilityClass.h">
+      <Filter>Sindy\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Sindy\SQLite\sqlite3.h">
+      <Filter>Sindy\SQLite</Filter>
+    </ClInclude>
+    <ClInclude Include="Sindy\Common\template.h">
+      <Filter>Sindy\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Sindy\Common\ConstDefine.h">
+      <Filter>Sindy\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Sindy\SQLite\SQLiteUtility.h">
+      <Filter>Sindy\SQLite</Filter>
+    </ClInclude>
+    <ClInclude Include="Sindy\RangeBound\RangeBound.h">
+      <Filter>Sindy\RangeBound</Filter>
+    </ClInclude>
+    <ClInclude Include="Sindy\RangeBound\TestRange.h">
+      <Filter>Sindy\RangeBound</Filter>
+    </ClInclude>
+    <ClInclude Include="Sindy\RangeBound\GeoClass.h">
+      <Filter>Sindy\RangeBound</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Sindy.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Sindy\Common\StringUtil.cpp">
+      <Filter>Sindy\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Sindy\Common\UtilityClass.cpp">
+      <Filter>Sindy\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Sindy\SQLite\sqlite3.c">
+      <Filter>Sindy\SQLite</Filter>
+    </ClCompile>
+    <ClCompile Include="Sindy\Common\ConstDefine.cpp">
+      <Filter>Sindy\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Sindy\SQLite\SQLiteUtility.cpp">
+      <Filter>Sindy\SQLite</Filter>
+    </ClCompile>
+    <ClCompile Include="Sindy\RangeBound\RangeBound.cpp">
+      <Filter>Sindy\RangeBound</Filter>
+    </ClCompile>
+    <ClCompile Include="Sindy\RangeBound\TestRange.cpp">
+      <Filter>Sindy\RangeBound</Filter>
+    </ClCompile>
+    <ClCompile Include="Sindy\RangeBound\GeoClass.cpp">
+      <Filter>Sindy\RangeBound</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Sindy.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
