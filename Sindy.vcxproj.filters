@@ -25,6 +25,9 @@
     <Filter Include="Sindy\RangeBound">
       <UniqueIdentifier>{4a7a0b05-59c7-42d6-9320-5f61cfbecba4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sindy\Test">
+      <UniqueIdentifier>{1e499c98-ae9f-47ce-9e31-0759b65dfb47}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -63,11 +66,11 @@
     <ClInclude Include="Sindy\RangeBound\RangeBound.h">
       <Filter>Sindy\RangeBound</Filter>
     </ClInclude>
-    <ClInclude Include="Sindy\RangeBound\TestRange.h">
-      <Filter>Sindy\RangeBound</Filter>
-    </ClInclude>
     <ClInclude Include="Sindy\RangeBound\GeoClass.h">
       <Filter>Sindy\RangeBound</Filter>
+    </ClInclude>
+    <ClInclude Include="Sindy\Test\TestRangeBound.h">
+      <Filter>Sindy\Test</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -95,11 +98,11 @@
     <ClCompile Include="Sindy\RangeBound\RangeBound.cpp">
       <Filter>Sindy\RangeBound</Filter>
     </ClCompile>
-    <ClCompile Include="Sindy\RangeBound\TestRange.cpp">
-      <Filter>Sindy\RangeBound</Filter>
-    </ClCompile>
     <ClCompile Include="Sindy\RangeBound\GeoClass.cpp">
       <Filter>Sindy\RangeBound</Filter>
+    </ClCompile>
+    <ClCompile Include="Sindy\Test\TestRangeBound.cpp">
+      <Filter>Sindy\Test</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

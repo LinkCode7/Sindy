@@ -8,14 +8,18 @@
 
 
 
-
-
-
-
-
-namespace PmRangeBound
+namespace Sindy
 {
-	BoundItem::BoundItem(IPmBoundItem* ipItem):
+	bool IBoundItem::GetId(REGIONID& id)
+	{
+		return false;
+	}
+	bool IBoundItem::GetExtents(double& dMinX, double& dMinY, double& dMaxX, double& dMaxY)
+	{
+		return false;
+	}
+
+	BoundItem::BoundItem(IBoundItem* ipItem):
 	m_ipItem(ipItem),
 	m_dMinX(0.0),
 	m_dMinY(0.0),
@@ -28,7 +32,7 @@ namespace PmRangeBound
 	{
 	}
 
-	RangeItem::RangeItem(IPmBoundItem* ipItem, Ranges* pRange, bool isMin, bool isSrc):
+	RangeItem::RangeItem(IBoundItem* ipItem, Ranges* pRange, bool isMin, bool isSrc):
 	BoundItem(ipItem),
 	m_pItems(pRange),
 	m_isMin(isMin),
@@ -61,7 +65,7 @@ namespace PmRangeBound
 		m_setCheck.clear();
 	}
 
-	bool Range2d::SetItemMin(IPmBoundItem* ipItem, double dTol, bool isNeedCheckRepeat)
+	bool Range2d::SetItemMin(IBoundItem* ipItem, double dTol, bool isNeedCheckRepeat)
 	{
 		if( !ipItem ) return false;
 
@@ -95,7 +99,7 @@ namespace PmRangeBound
 		return true;
 	}
 
-	void Range2d::GetSameItem(const AcGePoint3d& ptMin, const AcGePoint3d& ptMax, std::set<IPmBoundItem*>& setRepeat, double dTol) const
+	void Range2d::GetSameItem(const AcGePoint3d& ptMin, const AcGePoint3d& ptMax, std::set<IBoundItem*>& setRepeat, double dTol) const
 	{
 		double dLeft = ptMin.x - dTol;
 		double dRight = ptMax.x + dTol;
@@ -121,14 +125,14 @@ namespace PmRangeBound
 		}
 	}
 
-	void Range2d::GetSameItem(const AcGePoint3d& ptInsert, std::set<IPmBoundItem*>& setRepeat, double radius, double dTol) const
+	void Range2d::GetSameItem(const AcGePoint3d& ptInsert, std::set<IBoundItem*>& setRepeat, double radius, double dTol) const
 	{
 		GetSameItem(AcGePoint3d(ptInsert.x-radius,ptInsert.y-radius,0), AcGePoint3d(ptInsert.x+radius,ptInsert.y+radius,0), setRepeat, dTol);
 	}
 
 
 
-	bool Range2d::SetItemMax(IPmBoundItem* ipItem, double dTol, bool isNeedCheckRepeat)
+	bool Range2d::SetItemMax(IBoundItem* ipItem, double dTol, bool isNeedCheckRepeat)
 	{
 		if( !ipItem ) return false;
 
@@ -162,7 +166,7 @@ namespace PmRangeBound
 		return true;
 	}
 
-	void Range2d::GetIntersectItem(const AcGePoint3d& ptMin, const AcGePoint3d& ptMax, std::set<IPmBoundItem*>& setRepeat, double dTol) const
+	void Range2d::GetIntersectItem(const AcGePoint3d& ptMin, const AcGePoint3d& ptMax, std::set<IBoundItem*>& setRepeat, double dTol) const
 	{
 		double dLeft = ptMin.x - dTol;
 		double dRight = ptMax.x + dTol;
@@ -186,7 +190,7 @@ namespace PmRangeBound
 		}
 	}
 
-	void Range2d::GetIntersectItem(const AcGePoint3d& ptInsert, std::set<IPmBoundItem*>& setRepeat, double radius, double dTol) const
+	void Range2d::GetIntersectItem(const AcGePoint3d& ptInsert, std::set<IBoundItem*>& setRepeat, double radius, double dTol) const
 	{
 		GetIntersectItem(AcGePoint3d(ptInsert.x-radius,ptInsert.y-radius,0), AcGePoint3d(ptInsert.x+radius,ptInsert.y+radius,0), setRepeat, dTol);
 	}
@@ -197,7 +201,7 @@ namespace PmRangeBound
 
 
 	// 只输出源实体相关的Bound
-	bool Range2d::SetItems(IPmBoundItem* ipItem, bool isSrc, double dTol, bool isNeedCheckRepeat)
+	bool Range2d::SetItems(IBoundItem* ipItem, bool isSrc, double dTol, bool isNeedCheckRepeat)
 	{
 		if( !ipItem ) return false;
 
@@ -367,4 +371,4 @@ namespace PmRangeBound
 		}
 	}
 
-} // namespace PmRangeBound
+} // namespace Sindy

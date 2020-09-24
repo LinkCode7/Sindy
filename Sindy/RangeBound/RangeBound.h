@@ -6,7 +6,7 @@
 
 
 
-namespace PmRangeBound
+namespace Sindy
 {
 #define ZERO 0.000001
 #define UNKNOWN_REGION_ID -999999
@@ -48,16 +48,22 @@ namespace PmRangeBound
 
 
 
+	class IBoundItem
+	{
+	public:
+		virtual bool GetId(REGIONID& id);
+		virtual bool GetExtents(double& dMinX, double& dMinY, double& dMaxX, double& dMaxY);
+	};
 
-	// 这个class很像IPmBoundItem的实例
+	// 这个class很像IBoundItem的实例
 	class SINDY_API BoundItem
 	{
 	public:
-		BoundItem(IPmBoundItem* ipItem);
+		BoundItem(IBoundItem* ipItem);
 		virtual ~BoundItem();
 
-		// 以内嵌的方式包含IPmBoundItem，方便调用者转换
-		IPmBoundItem* m_ipItem;
+		// 以内嵌的方式包含IBoundItem，方便调用者转换
+		IBoundItem* m_ipItem;
 		double m_dMinX;
 		double m_dMinY;
 		double m_dMaxX;
@@ -75,7 +81,7 @@ namespace PmRangeBound
 			std::vector<RangeItem*> m_items;
 		};
 
-		RangeItem(IPmBoundItem* ipItem, Ranges* pRange, bool isMin, bool isSrc);
+		RangeItem(IBoundItem* ipItem, Ranges* pRange, bool isMin, bool isSrc);
 		~RangeItem();
 
 		bool m_isMin; // 起点端标志
@@ -104,10 +110,10 @@ namespace PmRangeBound
 		void Reset();
 
 		// 请调用者保证Item唯一性
-		bool SetItemMin(IPmBoundItem* ipItem, double dTol=0.0, bool isNeedCheckRepeat=false);
+		bool SetItemMin(IBoundItem* ipItem, double dTol=0.0, bool isNeedCheckRepeat=false);
 		// 获取某个范围内的Item
-		void GetSameItem(const AcGePoint3d& ptMin, const AcGePoint3d& ptMax, std::set<IPmBoundItem*>& setRepeat, double dTol=1000)const;
-		void GetSameItem(const AcGePoint3d& ptInsert, std::set<IPmBoundItem*>& setRepeat, double radius, double dTol=1000)const;
+		void GetSameItem(const AcGePoint3d& ptMin, const AcGePoint3d& ptMax, std::set<IBoundItem*>& setRepeat, double dTol=1000)const;
+		void GetSameItem(const AcGePoint3d& ptInsert, std::set<IBoundItem*>& setRepeat, double radius, double dTol=1000)const;
 
 		// 勿用，此函数有待处理20200220
 		void GetSameItems(std::vector<RangeItem*>& vecIntersect);
@@ -117,9 +123,9 @@ namespace PmRangeBound
 
 
 		// 请调用者保证Item唯一性
-		bool SetItemMax(IPmBoundItem* ipItem, double dTol=0.0, bool isNeedCheckRepeat=false);
-		void GetIntersectItem(const AcGePoint3d& ptMin, const AcGePoint3d& ptMax, std::set<IPmBoundItem*>& setRepeat, double dTol)const;
-		void GetIntersectItem(const AcGePoint3d& ptInsert, std::set<IPmBoundItem*>& setRepeat, double radius, double dTol=1000)const;
+		bool SetItemMax(IBoundItem* ipItem, double dTol=0.0, bool isNeedCheckRepeat=false);
+		void GetIntersectItem(const AcGePoint3d& ptMin, const AcGePoint3d& ptMax, std::set<IBoundItem*>& setRepeat, double dTol)const;
+		void GetIntersectItem(const AcGePoint3d& ptInsert, std::set<IBoundItem*>& setRepeat, double radius, double dTol=1000)const;
 
 
 
@@ -128,7 +134,7 @@ namespace PmRangeBound
 
 
 		// 只输出源实体相关的Bound，请调用者保证Item唯一性
-		bool SetItems(IPmBoundItem* ipItem, bool isSrc=true, double dTol=0.0, bool isNeedCheckRepeat=false);
+		bool SetItems(IBoundItem* ipItem, bool isSrc=true, double dTol=0.0, bool isNeedCheckRepeat=false);
 		// 获取相交的Item，包括覆盖的情况。调用者不要释放传出的容器
 		void GetIntersectItems(std::vector<RangeItem*>& vecIntersect, SrcDestFunction function=CompareSrc);
 
@@ -152,4 +158,4 @@ namespace PmRangeBound
 		}
 	}
 
-} // namespace PmRangeBound
+} // namespace Sindy

@@ -83,12 +83,3 @@ private:
 	AcGePoint3d    mMinPoint;
 	AcGePoint3d    mMaxPoint;
 };
-
-
-
-class IPmBoundItem
-{
-public:
-	virtual bool GetId(REGIONID& id);
-	virtual bool GetExtents(double& dMinX, double& dMinY, double& dMaxX, double& dMaxY);
-};

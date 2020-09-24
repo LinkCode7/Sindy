@@ -19,3 +19,5 @@
 #include "Sindy\SQLite\SQLiteUtility.h"
 
 #include "Sindy\RangeBound\RangeBound.h"
+
+#include "Sindy\Test\TestRangeBound.h"
