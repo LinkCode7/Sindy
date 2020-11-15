@@ -23,9 +23,8 @@ namespace Sindy
 
 	SQLite::~SQLite()
 	{
-		Finalize();
-
-		Close();
+		if(m_isNeedDeleteDb)
+			Close();
 	}
 
 	int SQLite::Open(const CString& strSqliteDbPath)
