@@ -9,7 +9,7 @@ namespace Sindy
 	SQLite::SQLite(const CString& strDbPath) :
 	m_pDb(NULL),
 	m_pStmt(NULL),
-	m_isNeedDeleteDb(true)
+	m_pUseCount(new unsigned int(1))
 	{
 		Open(strDbPath);
 	}
@@ -17,14 +17,19 @@ namespace Sindy
 	SQLite::SQLite(const SQLite& opened) :
 	m_pDb(opened.m_pDb),
 	m_pStmt(NULL),
-	m_isNeedDeleteDb(false)
+	m_pUseCount(opened.m_pUseCount)
 	{
+		(*m_pUseCount)++;
 	}
 
 	SQLite::~SQLite()
 	{
-		if(m_isNeedDeleteDb)
+		--(*m_pUseCount);
+		if ((*m_pUseCount) == 0)
+		{
 			Close();
+			delete m_pUseCount;
+		}
 	}
 
 	int SQLite::Open(const CString& strSqliteDbPath)
@@ -61,7 +66,7 @@ namespace Sindy
 
 		// ¹Ø±ÕÊý¾Ý¿â
 		int rc = SQLITE_OK;
-		if (m_isNeedDeleteDb)
+		if ((*m_pUseCount) == 0)
 			rc = sqlite3_close(m_pDb);
 		m_pDb = NULL;
 		return SQLITE_OK;

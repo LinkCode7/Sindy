@@ -124,7 +124,7 @@ namespace Sindy
 		sqlite3* m_pDb;
 		sqlite3_stmt* m_pStmt;
 
-		bool m_isNeedDeleteDb;
+		unsigned int* m_pUseCount;
 		std::map<CString, int> m_mapFieldName2Index;
 	};
 
